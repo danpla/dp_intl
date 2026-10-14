@@ -202,8 +202,13 @@ With [FetchContent], CMake will automatically download dp_intl source
 code, either as an archive or directly from the Git repository:
 
     include(FetchContent)
-    FetchContent_Declare(dp_intl <options>)
+
+    FetchContent_Declare(
+        dp_intl
+        URL https://github.com/danpla/dp_intl/archive/refs/tags/v<version>.tar.gz
+        URL_HASH SHA256=<TAR.GZ file hash>)
     FetchContent_MakeAvailable(dp_intl)
+
     target_link_libraries(your_target PRIVATE dp_intl::dp_intl)
 
 
