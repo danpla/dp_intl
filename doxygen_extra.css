@@ -1,0 +1,46 @@
+body {
+  max-width: 43em;
+  margin: 0 auto;
+}
+
+body, table, div, p, dl {
+  font-size: revert;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: underline;
+}
+
+.permalink a {
+  text-decoration: none;
+}
+
+p.startli, p.startdd {
+  all: revert;
+}
+
+div.summary {
+  width: revert;
+}
+
+div.line, pre.fragment {
+  font-size: revert;
+  line-height: 1.2;
+}
+
+span.tt {
+  background-color: #dde;
+  padding: 0.1em 0.2em;
+}
+
+
+div.toc {
+  all: revert;
+  border-bottom: 0.1em solid #C4CFE5;
+}
+
+div.toc li,
+div.toc h3 {
+  all: revert;
+}
