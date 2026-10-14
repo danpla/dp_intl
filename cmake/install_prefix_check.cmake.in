@@ -1,0 +1,23 @@
+# This script will be run by install(SCRIPT) to issue a warning when
+# the configuration and installation steps use different installation
+# prefixes.
+#
+# Some of our files (such as a pkg-config file) generated during the
+# configuration step using configure_file() have references to
+# CMAKE_INSTALL_PREFIX. If the user specifies a different prefix
+# during the installation step, these files will not be updated.
+
+if ("${CMAKE_INSTALL_PREFIX}" STREQUAL "@CMAKE_INSTALL_PREFIX@")
+    return()
+endif()
+
+message(
+    WARNING
+    "The current installation prefix (\"${CMAKE_INSTALL_PREFIX}\") "
+    "is not the same as the prefix used during the configuration "
+    "step (\"@CMAKE_INSTALL_PREFIX@\").\n"
+    "This is fine if you're installing to a staging area and will "
+    "eventually move the files to \"@CMAKE_INSTALL_PREFIX@\". "
+    "Otherwise, please specify the installation prefix using the "
+    "CMAKE_INSTALL_PREFIX variable or the --install-prefix option "
+    "instead of the --prefix option of \"cmake --install\".")

@@ -1,0 +1,11 @@
+#include "files_dir.h"
+
+
+namespace test {
+
+
+const std::filesystem::path filesDirPath{
+    std::filesystem::u8path("@FILES_DIR@")};
+
+
+}
