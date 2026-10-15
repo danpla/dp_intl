@@ -13,21 +13,21 @@ namespace {
 
 
 [[noreturn]]
-void throwUnknownFieldPropertyError(std::string_view prop)
+void throwUnknownPropertyError(std::string_view prop)
 {
     throw Error{"Unknown property \"" + std::string{prop} + "\""};
 }
 
 
 [[noreturn]]
-void throwMissingFieldPropertyError(std::string_view prop)
+void throwMissingPropertyError(std::string_view prop)
 {
     throw Error{"Missing \"" + std::string{prop} + "\" property"};
 }
 
 
 [[noreturn]]
-void throwInvalidFieldPropertyError(
+void throwInvalidPropertyError(
     std::string_view prop, std::string_view description)
 {
     throw Error{
@@ -94,17 +94,17 @@ void processContentTypeField(GnuHeader& header, std::string_view val)
             try {
                 propKv = splitProp(prop);
             } catch (const Error& e) {
-                throwInvalidFieldPropertyError(prop, e.what());
+                throwInvalidPropertyError(prop, e.what());
             }
 
             if (propKv.key == charsetProp)
                 header.charset = propKv.val;
             else
-                throwUnknownFieldPropertyError(propKv.key);
+                throwUnknownPropertyError(propKv.key);
         });
 
     if (header.charset.empty())
-        throwMissingFieldPropertyError(charsetProp);
+        throwMissingPropertyError(charsetProp);
 }
 
 
@@ -124,7 +124,7 @@ void processPluralFormsField(GnuHeader& header, std::string_view val)
             try {
                 propKv = splitProp(prop);
             } catch (const Error& e) {
-                throwInvalidFieldPropertyError(prop, e.what());
+                throwInvalidPropertyError(prop, e.what());
             }
 
             if (propKv.key == npluralsProp)
@@ -132,13 +132,13 @@ void processPluralFormsField(GnuHeader& header, std::string_view val)
             else if (propKv.key == pluralProp)
                 plural = propKv.val;
             else
-                throwUnknownFieldPropertyError(propKv.key);
+                throwUnknownPropertyError(propKv.key);
         });
 
     if (nplurals.empty())
-        throwMissingFieldPropertyError(npluralsProp);
+        throwMissingPropertyError(npluralsProp);
     if (plural.empty())
-        throwMissingFieldPropertyError(pluralProp);
+        throwMissingPropertyError(pluralProp);
 
     const auto* nBegin = nplurals.data();
     const auto* nEnd = nBegin + nplurals.size();
@@ -146,13 +146,13 @@ void processPluralFormsField(GnuHeader& header, std::string_view val)
     const auto [ptr, ec] = std::from_chars(nBegin, nEnd, n);
     if (ec != std::errc{} || ptr != nEnd) {
         if (ec == std::errc::result_out_of_range)
-            throwInvalidFieldPropertyError(
+            throwInvalidPropertyError(
                 npluralsProp,
                 "Number "
                     + std::string{nBegin, ptr}
                     + "[...] is out of range");
 
-        throwInvalidFieldPropertyError(
+        throwInvalidPropertyError(
             npluralsProp,
             "Invalid number format \""
                 + std::string{nplurals} + "\"");
