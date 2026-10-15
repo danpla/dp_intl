@@ -331,7 +331,7 @@ MessageCatalog::MessageCatalog(Stream& stream)
     };
 
     const auto loadStrTables =
-    [&stream, &readU32, &readOffset, strCount]() -> StrTables
+    [&stream, &readU32, &readOffset, strCount]()
     {
         struct TableInfo {
             const char* name;
@@ -440,7 +440,7 @@ MessageCatalog::MessageCatalog(Stream& stream)
                     + e.what()};
             }
 
-        return {
+        return StrTables{
             std::move(tableInfos[0].items),
             std::move(tableInfos[1].items),
             strDataSize};
@@ -695,7 +695,7 @@ MessageCatalog::MessageCatalog(Stream& stream)
             throw Error{"Can't parse header entry: "s + e.what()};
         }
 
-        if (!header.charset.empty() // Add ASCII
+        if (!header.charset.empty()
                 && !equalIgnoreCase(header.charset, "UTF-8"))
             throw Error{
                 "Unsupported charset "
