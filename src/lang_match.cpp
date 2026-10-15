@@ -14,12 +14,12 @@ using Subtags = std::vector<std::string_view>;
 
 void splitTag(std::string_view tag, Subtags& subtags)
 {
-    const auto isSubtagChar = [](unsigned char c)
+    const auto isSubtagChar = [](char c)
     {
         return isAlpha(c) || isDigit(c);
     };
 
-    const auto isSep = [](unsigned char c)
+    const auto isSep = [](char c)
     {
         return c == '-' || c == '_';
     };
