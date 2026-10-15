@@ -203,7 +203,27 @@ void testTranslation()
         TEST_TRANSLATE(tr.METHOD(__VA_ARGS__), EXPECTED); \
         TEST_TRANSLATE(tr.METHOD ## CStr(__VA_ARGS__), EXPECTED)
 
-    TEST("?", translate, "?");
+    const auto* header =
+        "Project-Id-Version: Test\n"
+        "PO-Revision-Date: 2026-05-06 16:20+0200\n"
+        "Last-Translator: Automatically generated\n"
+        "Language-Team: none\n"
+        "Language: ru\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
+        "Plural-Forms: nplurals=3; plural="
+            "(n%10==1 && n%100!=11 ? 0 : "
+            "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) "
+            "? 1 : 2);\n";
+
+    TEST(header, translate, "");
+    TEST("", translateContext, "", "");
+    TEST("", translateN, 1, "", "");
+    TEST("", translateContextN, "", 1, "", "");
+
+    // ===
+
     TEST("?", translate, "?");
     TEST("@Text", translate, "Text");
 
