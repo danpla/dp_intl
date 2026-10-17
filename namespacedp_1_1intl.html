@@ -68,7 +68,7 @@ Classes</h2></td></tr>
 <tr class="memitem:Error" id="r_Error"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classdp_1_1intl_1_1Error.html">Error</a></td></tr>
 <tr class="memitem:FileNotFoundError" id="r_FileNotFoundError"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classdp_1_1intl_1_1FileNotFoundError.html">FileNotFoundError</a></td></tr>
 <tr class="memitem:FileStream" id="r_FileStream"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classdp_1_1intl_1_1FileStream.html">FileStream</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classdp_1_1intl_1_1Stream.html" title="Input stream.">Stream</a> for a file.  <a href="classdp_1_1intl_1_1FileStream.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">File stream.  <a href="classdp_1_1intl_1_1FileStream.html#details">More...</a><br /></td></tr>
 <tr class="memitem:GermanicPluralSpec" id="r_GermanicPluralSpec"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structdp_1_1intl_1_1GermanicPluralSpec.html">GermanicPluralSpec</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A plural specification for the Germanic family of languages.  <a href="structdp_1_1intl_1_1GermanicPluralSpec.html#details">More...</a><br /></td></tr>
 <tr class="memitem:LangTagFormat" id="r_LangTagFormat"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structdp_1_1intl_1_1LangTagFormat.html">LangTagFormat</a></td></tr>
@@ -83,7 +83,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a9ae6ece999fdfa518396a5ede1089df9" id="r_a9ae6ece999fdfa518396a5ede1089df9"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a9ae6ece999fdfa518396a5ede1089df9">CountT</a> = std::uint64_t</td></tr>
-<tr class="memdesc:a9ae6ece999fdfa518396a5ede1089df9"><td class="mdescLeft">&#160;</td><td class="mdescRight">An integer type for representing numbers in the plural form methods of the <a class="el" href="classdp_1_1intl_1_1Translator.html" title="Translator.">Translator</a> class.  <br /></td></tr>
+<tr class="memdesc:a9ae6ece999fdfa518396a5ede1089df9"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type for representing numbers in the plural form methods of the <a class="el" href="classdp_1_1intl_1_1Translator.html" title="Translator.">Translator</a> class.  <br /></td></tr>
 <tr class="memitem:a58d75968a1b246b2aa31a16b8dfb435a" id="r_a58d75968a1b246b2aa31a16b8dfb435a"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a58d75968a1b246b2aa31a16b8dfb435a">LangMatchFn</a></td></tr>
 <tr class="memdesc:a58d75968a1b246b2aa31a16b8dfb435a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The language tag callback of <a class="el" href="#a1abe098a87190401265176929bb58af4" title="Choose a language based on the priority list.">matchLang()</a>.  <br /></td></tr>
 </table><table class="memberdecls">
@@ -107,7 +107,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>An integer type for representing numbers in the plural form methods of the <a class="el" href="classdp_1_1intl_1_1Translator.html" title="Translator.">Translator</a> class. </p>
+<p>A type for representing numbers in the plural form methods of the <a class="el" href="classdp_1_1intl_1_1Translator.html" title="Translator.">Translator</a> class. </p>
 
 </div>
 </div>
@@ -155,10 +155,10 @@ Functions</h2></td></tr>
 <p>The purpose of this function is to help you choose the most suitable application language based on the user-configured language priority list. You can get this list using system APIs, like GetUserPreferredUILanguages() on Windows, NSLocale.preferredLanguages() on Apple platforms, LocaleList.getAdjustedDefault() on Android, and so on.</p>
 <h1 class="doxsection"><a class="anchor" id="language-tag-format"></a>
 Language tag format</h1>
-<p>Each tag in the priority list has the format similar to BCP 47 (<a href="https://www.rfc-editor.org/info/rfc5646/">RFC 5646</a>) and locale identifiers on most platforms. The tag consists of one or more subtags divided by separators. A subtag is one or more alphanumeric characters (A-Z, a-z, 0-9), a separator is either an underscore or hyphen.</p>
-<p>In its basic (and most common) form, a language tag consists of:</p>
+<p>The format of each tag in the priority list is similar to BCP 47 (<a href="https://www.rfc-editor.org/info/rfc5646/">RFC 5646</a>) and locale identifiers on most platforms. A tag consists of one or more subtags separated by underscores or hyphens. A subtag consists of one or more alphanumeric characters (A-Z, a-z, 0-9).</p>
+<p>In its basic and most common form, a language tag consists of:</p>
 <ul>
-<li>The primary language subtag, such as <span class="tt">en</span> for English or <span class="tt">zh</span> for Chinese.</li>
+<li>A primary language subtag, such as <span class="tt">en</span> for English or <span class="tt">zh</span> for Chinese.</li>
 <li>An optional 4-letter script subtag, such as <span class="tt">Latn</span> for the Latin script or <span class="tt">Hans</span> for the Simplified Chinese script.</li>
 <li>An optional 2-letter region subtag, such as <span class="tt">GB</span> for Great Britain or <span class="tt">CN</span> for Mainland China.</li>
 </ul>
@@ -175,14 +175,14 @@ Language tag format</h1>
 <li>A single-character subtag. Such subtags are called "singletons" in BCP 47.</li>
 <li>An empty subtag. Such a subtag can appear as a leading/trailing subtag separator, or two separators in the middle of the tag.</li>
 <li><p class="startli">A symbol that is not a valid subtag or separator character.</p>
-<p class="startli">Note that this will effectively strip any platform-specific "extensions" from locale identifiers, such as <span class="tt">.codeset</span> and <span class="tt">@modifier</span> used in POSIX platforms. For example, <span class="tt">de_DE.UTF-8@euro</span> is treated the same as <span class="tt">de_DE</span>.</p>
+<p class="startli">Note that this will effectively strip any platform-specific "extensions" from locale identifiers, such as <span class="tt">.codeset</span> and <span class="tt">@modifier</span> used on POSIX platforms. For example, <span class="tt">de_DE.UTF-8@euro</span> is treated the same as <span class="tt">de_DE</span>.</p>
 </li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="matching-algorithm"></a>
 Matching algorithm</h1>
 <p>For each language tag in the priority list, <a class="el" href="#a1abe098a87190401265176929bb58af4" title="Choose a language based on the priority list.">matchLang()</a> generates the tag variants using the algorithm described below, and calls <span class="tt">matchFn</span> for each variant until the function either returns <span class="tt">true</span> (indicating a successful match) or throws an exception.</p>
-<p><span class="tt">matchFn</span> will never be called more than once for the same tag. The tag comparison is case-insensitive, but be aware that the case of the tag passed to <span class="tt">matchFn</span> will be the same as in the original tag string that was encountered first among the possible duplicates.</p>
-<p>Note that for <span class="tt">matchFn</span>, a tag is represented as a list of subtags rather than a single string. For simplicity, the rest of this text will denote these lists using the full tag strings, as if subtags were joined by hyphens.</p>
+<p><span class="tt">matchFn</span> is never called more than once for the same tag. The tag comparison is case-insensitive, but be aware that the case of the tag passed to <span class="tt">matchFn</span> will be the same as in the original tag string that was encountered first among the possible duplicates.</p>
+<p>Note that for <span class="tt">matchFn</span>, a tag is represented as a list of subtags rather than a single string. For simplicity, the rest of this text will use the full tag strings to denote these lists, as if the subtags were joined by hyphens.</p>
 <h2 class="doxsection"><a class="anchor" id="basic-tag-variants"></a>
 Basic tag variants</h2>
 <p><a class="el" href="#a1abe098a87190401265176929bb58af4" title="Choose a language based on the priority list.">matchLang()</a> splits a tag into the list of sutags, and performs the following steps, repeatedly:</p>
@@ -201,7 +201,7 @@ Basic tag variants</h2>
 1
 </pre><h2 class="doxsection"><a class="anchor" id="additional-tag-variants"></a>
 Additional tag variants</h2>
-<p>During execution of the basic algorithm described above, <a class="el" href="#a1abe098a87190401265176929bb58af4" title="Choose a language based on the priority list.">matchLang()</a> can generate additional tag variants to handle forward and backward compatibility between the naming of you languages and the tags from the priority list.</p>
+<p>During execution of the basic algorithm described above, <a class="el" href="#a1abe098a87190401265176929bb58af4" title="Choose a language based on the priority list.">matchLang()</a> can generate additional tag variants to handle forward and backward compatibility between your language names and the tags from the priority list.</p>
 <p>The additional tags are not subject to the transformations performed by the tag variant generation algorithm described in the previous section. Instead, these tags are injected into it when <span class="tt">matchFn</span> returns <span class="tt">false</span> for a basic tag.</p>
 <p>Currently, the additional variants are generated for Chinese language tags (the first subtag is <span class="tt">zh</span>). The problem with Chinese language tags is that, historically, people used <span class="tt">zh-CN</span> (Chinese used in Mainland China) to imply Simplified Chinese, and <span class="tt">zh-TW</span> (Chinese used in Taiwan) to imply Traditional Chinese. This practice was deprecated in favor of the <span class="tt">zh-Hans</span> and <span class="tt">zh-Hant</span> tags, which explicitly specify the script rather than implying it by the region subtag. For more information, see <a href="https://www.w3.org/International/geo/html-tech/tech-lang.html#ri20040429.113217290">Using Hans and Hant codes</a>.</p>
 <p>Depending on the source of the language priority list, the Chinese tags can be in either the old or the new format. To unify the language lookup, <a class="el" href="#a1abe098a87190401265176929bb58af4" title="Choose a language based on the priority list.">matchLang()</a> does the following:</p>

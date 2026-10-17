@@ -105,9 +105,9 @@ class dp::intl::Translator&lt; PluralSpec &gt;</div><p><a class="el" href="class
 PluralSpec</h1>
 <p>The PluralSpec template argument defines a plural form specification used by methods such as <a class="el" href="#a3004c8fc841bc3a5189922e99c2ec0ed" title="Translate a plural form message.">translateN()</a> and <a class="el" href="#aeb109c141edeb7208206aaf5ecf78912" title="Translate a plural form message using a context to resolve ambiguities.">translateContextN()</a>. Think of it as the "Plural-Forms" entry from Gettext PO files, expressed in C++ code. This type should have the following:</p>
 <ul>
-<li>A static constant number <span class="tt">numPlurals</span> of type <a class="el" href="namespacedp_1_1intl.html#a9ae6ece999fdfa518396a5ede1089df9" title="An integer type for representing numbers in the plural form methods of the Translator class.">CountT</a>, equal to the total number of plural forms (must be &gt; 0). This value defines the number of arguments taken by the plural form methods such as <a class="el" href="#a3004c8fc841bc3a5189922e99c2ec0ed" title="Translate a plural form message.">translateN()</a>.</li>
+<li>A static constant number <span class="tt">numPlurals</span> of type <a class="el" href="namespacedp_1_1intl.html#a9ae6ece999fdfa518396a5ede1089df9" title="A type for representing numbers in the plural form methods of the Translator class.">CountT</a>, equal to the total number of plural forms (must be &gt; 0). This value defines the number of arguments taken by the plural form methods.</li>
 <li><p class="startli">A call operator with a signature: </p><pre class="fragment">CountT operator()(CountT n) const
-</pre><p class="startli">The operator takes the <span class="tt">n</span> argument from a plural form method such as <a class="el" href="#a3004c8fc841bc3a5189922e99c2ec0ed" title="Translate a plural form message.">translateN()</a>, and returns an index of the plural form within the range [0, numPlurals).</p>
+</pre><p class="startli">The operator takes the <span class="tt">n</span> argument from a plural form method and returns an index of the plural form within the range [0, numPlurals).</p>
 </li>
 </ul>
 <p>The <span class="tt"><a class="el" href="translator__plural__spec_8h.html" title="Default PluralSpec implementations for dp::intl::Translator.">translator_plural_spec.h</a></span> header provides <a class="el" href="structdp_1_1intl_1_1GermanicPluralSpec.html" title="A plural specification for the Germanic family of languages.">GermanicPluralSpec</a> (for English and other Germanic languages) and <a class="el" href="structdp_1_1intl_1_1SingleFormPluralSpec.html" title="A specification for a single plural form.">SingleFormPluralSpec</a> (for languages that use a single form, or when using ID-based translations). Plural rules for other languages are available at the following resources; use the "nplurals=" number for <span class="tt">numPlurals</span> and paste the "plural=" formula directly into the call operator:</p>
@@ -254,7 +254,7 @@ template&lt;typename PluralSpec&gt; </div>
 </div><div class="memdoc">
 
 <p>Translate a message. </p>
-<p>The method searches the message catalog (MO file) for a message with the given ID. If the message is not present in the catalog (i.e., the message has not been translated), the ID itself is returned. </p>
+<p>The method searches the message catalog for a message with the given ID. If the message is not present in the catalog (i.e., the message has not been translated), the ID itself is returned. </p>
 
 </div>
 </div>
@@ -284,7 +284,7 @@ template&lt;typename PluralSpec&gt; </div>
 </div><div class="memdoc">
 
 <p>Translate a message. </p>
-<p>The method searches the message catalog (MO file) for a message with the given ID. If the message is not present in the catalog (i.e., the message has not been translated), the ID itself is returned. </p>
+<p>The method searches the message catalog for a message with the given ID. If the message is not present in the catalog (i.e., the message has not been translated), the ID itself is returned. </p>
 
 </div>
 </div>
@@ -318,7 +318,7 @@ template&lt;typename PluralSpec&gt; </div>
 </div><div class="memdoc">
 
 <p>Translate a message using a context to resolve ambiguities. </p>
-<p>The method is similar to <a class="el" href="#a592c10af51d256fc4c8bdf0e77045726" title="Translate a message.">translate()</a>, but takes an additional <span class="tt">context</span> string to resolve ambiguities in cases when the same message ID can have different meanings depending on the context. For example, the word "Filter" can be both a noun (e.g., when used as a label for a text input field) and a verb (when used a button text).</p>
+<p>The method is similar to <a class="el" href="#a592c10af51d256fc4c8bdf0e77045726" title="Translate a message.">translate()</a>, but takes an additional <span class="tt">context</span> string to resolve ambiguities in cases when the same message ID can have different meanings depending on the context. For example, the word "Filter" can be both a noun (e.g., when used as a label for a text field) and a verb (when used as button text).</p>
 <p>See the Gettext manual for details:</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gettext/manual/html_node/Contexts.html">Using contexts for solving ambiguities</a></li>
@@ -357,7 +357,7 @@ template&lt;typename PluralSpec&gt; </div>
 </div><div class="memdoc">
 
 <p>Translate a message using a context to resolve ambiguities. </p>
-<p>The method is similar to <a class="el" href="#a592c10af51d256fc4c8bdf0e77045726" title="Translate a message.">translate()</a>, but takes an additional <span class="tt">context</span> string to resolve ambiguities in cases when the same message ID can have different meanings depending on the context. For example, the word "Filter" can be both a noun (e.g., when used as a label for a text input field) and a verb (when used a button text).</p>
+<p>The method is similar to <a class="el" href="#a592c10af51d256fc4c8bdf0e77045726" title="Translate a message.">translate()</a>, but takes an additional <span class="tt">context</span> string to resolve ambiguities in cases when the same message ID can have different meanings depending on the context. For example, the word "Filter" can be both a noun (e.g., when used as a label for a text field) and a verb (when used as button text).</p>
 <p>See the Gettext manual for details:</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gettext/manual/html_node/Contexts.html">Using contexts for solving ambiguities</a></li>
@@ -399,8 +399,8 @@ template&lt;typename... Plurals&gt; </div>
 
 <p>Translate a plural form message. </p>
 <p>The <span class="tt">n</span> parameter is an arbitrary number used to select the plural form based on the rules of the language. Keep in mind that <span class="tt">n</span> is an unsigned integer: negative and floating-point numbers generally do not represent physical entities and, therefore, should not be translated as plurals.</p>
-<p>The <span class="tt">plurals</span> parameter represents the plural forms of the source language. Despite being a parameter pack, it requires exactly <span class="tt">PluralSpec::numPlurals</span> arguments of the same string type as returned by the method (that is, <span class="tt">std::string_view</span> or <span class="tt">const char*</span>). A different number of arguments will result in a compile-time error.</p>
-<p>The method searches the message catalog (MO file) for a message with the ID equal to the first string in the <span class="tt">plurals</span> argument. If the message is found, the plural rule from the catalog is used to select the translated plural form. In this case, <span class="tt">PluralSpec</span> and the remaining <span class="tt">plurals</span> argument strings are not used. If the message is not present in the catalog (i.e., the message has not been translated), the <span class="tt">PluralSpec</span> is used to select a plural form from the <span class="tt">plurals</span> argument.</p>
+<p>The <span class="tt">plurals</span> parameter represents the plural forms of the source language. Despite being a parameter pack, it requires exactly <span class="tt">PluralSpec::numPlurals</span> arguments of the same string type as returned by the method. A different number of arguments will result in a compile-time error.</p>
+<p>The method searches the message catalog for a message with the ID equal to the first string in the <span class="tt">plurals</span> argument. If the message is found, the plural rule from the catalog is used to select the translated plural form. In this case, <span class="tt">PluralSpec</span> and the remaining <span class="tt">plurals</span> argument strings are not used. If the message is not present in the catalog (i.e., the message has not been translated), the <span class="tt">PluralSpec</span> is used to select a plural form from the <span class="tt">plurals</span> argument strings.</p>
 <p>See the Gettext manual for details:</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html">Additional functions for plural forms</a></li>
@@ -443,8 +443,8 @@ template&lt;typename... Plurals&gt; </div>
 
 <p>Translate a plural form message. </p>
 <p>The <span class="tt">n</span> parameter is an arbitrary number used to select the plural form based on the rules of the language. Keep in mind that <span class="tt">n</span> is an unsigned integer: negative and floating-point numbers generally do not represent physical entities and, therefore, should not be translated as plurals.</p>
-<p>The <span class="tt">plurals</span> parameter represents the plural forms of the source language. Despite being a parameter pack, it requires exactly <span class="tt">PluralSpec::numPlurals</span> arguments of the same string type as returned by the method (that is, <span class="tt">std::string_view</span> or <span class="tt">const char*</span>). A different number of arguments will result in a compile-time error.</p>
-<p>The method searches the message catalog (MO file) for a message with the ID equal to the first string in the <span class="tt">plurals</span> argument. If the message is found, the plural rule from the catalog is used to select the translated plural form. In this case, <span class="tt">PluralSpec</span> and the remaining <span class="tt">plurals</span> argument strings are not used. If the message is not present in the catalog (i.e., the message has not been translated), the <span class="tt">PluralSpec</span> is used to select a plural form from the <span class="tt">plurals</span> argument.</p>
+<p>The <span class="tt">plurals</span> parameter represents the plural forms of the source language. Despite being a parameter pack, it requires exactly <span class="tt">PluralSpec::numPlurals</span> arguments of the same string type as returned by the method. A different number of arguments will result in a compile-time error.</p>
+<p>The method searches the message catalog for a message with the ID equal to the first string in the <span class="tt">plurals</span> argument. If the message is found, the plural rule from the catalog is used to select the translated plural form. In this case, <span class="tt">PluralSpec</span> and the remaining <span class="tt">plurals</span> argument strings are not used. If the message is not present in the catalog (i.e., the message has not been translated), the <span class="tt">PluralSpec</span> is used to select a plural form from the <span class="tt">plurals</span> argument strings.</p>
 <p>See the Gettext manual for details:</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html">Additional functions for plural forms</a></li>

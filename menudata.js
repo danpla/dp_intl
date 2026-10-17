@@ -27,4 +27,6 @@ var menudata={children:[
 {text:"API Reference",url:"usergroup0.html",children:[
 {text:"dp::intl Namespace",url:"namespacedp_1_1intl.html"},
 {text:"File List",url:"files.html"}]},
-{text:"Development",url:"^https://github.com/danpla/dp_intl"}]}
+{text:"Download",url:"^https://github.com/danpla/dp_intl/releases"},
+{text:"Development",url:"^https://github.com/danpla/dp_intl"},
+{text:"License",url:"license.html"}]}

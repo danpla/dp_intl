@@ -107,7 +107,7 @@ Improvements over Gettext</h2>
 </li>
 <li><p class="startli"><b>No platform-specific number types</b></p>
 <p class="startli">The Gettext routines for translating plural form messages use the <span class="tt">unsigned long</span> type for numbers. The size of this type depends on the platform: for example, it is 64 bits wide on 64-bit Unix-like systems (Linux, macOS) but 32 bits wide on 64-bit Windows. This makes it impossible to write cross-platform code without limiting your numbers to 2³² (4,294,967,295) or using similar workarounds; otherwise, your translations will have incorrect plural forms due to unsigned wrap around (modulo 2³²) on systems with a 32-bit <span class="tt">unsigned long</span>.</p>
-<p class="startli">In contrast, dp_intl always uses a 64-bit integer type (<span class="tt">uint64_t</span>) on all platforms.</p>
+<p class="startli">In contrast, dp_intl uses a 64-bit integer type (<span class="tt">uint64_t</span>) on all platforms.</p>
 </li>
 <li><p class="startli"><b>Full control over file layout and loading</b></p>
 <p class="startli">Gettext can only load message catalogs from the local file system; the catalogs must reside in the directory structure required by the bindtextdomain() function (<span class="tt">&lt;locale&gt;/LC_MESSAGES/&lt;domain&gt;.mo</span>). If your application stores catalogs in an archive or package (such as an APK on Android), you will need to extract them locally for Gettext to work.</p>
@@ -115,7 +115,7 @@ Improvements over Gettext</h2>
 </li>
 <li><p class="startli"><b>Any language in source strings</b></p>
 <p class="startli">The Gettext routines for translating plural form messages are limited to English and several other languages with two plural forms: "one" for 1 and "many" for all other numbers. This makes it impossible to use any other language that doesn't fit in this formula. For example, French is not a suitable source language for Gettext because, although it also has two plural forms, "one" is used for both 0 and 1.</p>
-<p class="startli">In contrast, with dp_intl, you can use any language for the source strings because the plural rules are not hardcoded in the API but can be defined in the C++ code using the same formulas as used in PO files.</p>
+<p class="startli">In contrast, dp_intl supports source strings in any language because its plural rules are configurable rather than hardcoded in the API.</p>
 </li>
 </ul>
 <p>Smaller improvements include:</p>

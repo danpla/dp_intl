@@ -73,7 +73,7 @@
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a82fd30ba23114db95db574ee800c441f" id="r_a82fd30ba23114db95db574ee800c441f"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="#a82fd30ba23114db95db574ee800c441f">~Stream</a> ()=default</td></tr>
 <tr class="memitem:a14fc4eba7dae58d408d464e96bc40f06" id="r_a14fc4eba7dae58d408d464e96bc40f06"><td class="memItemLeft">virtual std::size_t&#160;</td><td class="memItemRight"><a class="el" href="#a14fc4eba7dae58d408d464e96bc40f06">readSome</a> (void *dst, std::size_t dstSize)=0</td></tr>
-<tr class="memdesc:a14fc4eba7dae58d408d464e96bc40f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read up to the given number of bytes from the stream.  <br /></td></tr>
+<tr class="memdesc:a14fc4eba7dae58d408d464e96bc40f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read up to <span class="tt">dstSize</span> bytes from the stream.  <br /></td></tr>
 <tr class="memitem:af9edec8a5e993ef46eede4d9e4e49919" id="r_af9edec8a5e993ef46eede4d9e4e49919"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#af9edec8a5e993ef46eede4d9e4e49919">setPosition</a> (std::int64_t newPosition)=0</td></tr>
 <tr class="memdesc:af9edec8a5e993ef46eede4d9e4e49919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the stream position.  <br /></td></tr>
 </table>
@@ -134,11 +134,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Read up to the given number of bytes from the stream. </p>
+<p>Read up to <span class="tt">dstSize</span> bytes from the stream. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes read, which can be less than <span class="tt">dstSize</span> if the end of the stream is reached.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classdp_1_1intl_1_1Error.html">Error</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="classdp_1_1intl_1_1Error.html">dp::intl::Error</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -173,7 +173,7 @@ Public Member Functions</h2></td></tr>
 <p>Set the stream position. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classdp_1_1intl_1_1Error.html">Error</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="classdp_1_1intl_1_1Error.html">dp::intl::Error</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
