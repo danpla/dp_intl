@@ -90,6 +90,6 @@ if(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
     option(DP_INTL_BUILD_DOCS "Build documentation with Doxygen" NO)
     if(DP_INTL_BUILD_DOCS)
-        include(doxygen)
+        include(docs)
     endif()
 endif()
