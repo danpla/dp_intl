@@ -15,14 +15,14 @@
 //
 // Although on Unix-like platforms DP_INTL_VISIBLE_SYMBOL is exactly
 // the same as DP_INTL_EXPORT, we can't replace the former with the
-// latter. On Windows (where marking a header-only class with
-// dllexport is unnecessary and harmless) this will give a MSVC
-// warning C4275 when the class derives from another class that is not
-// marked as dllexport. In our case, this will be a class derived from
-// a standard library exception. The C4275 documentation explicitly
-// states that this warning can be ignored when deriving from a
-// standard library type [2], but we don't want to mess with the
-// warning suppression pragmas; instead, we have a separate
+// latter for all platforms. On Windows (where marking a header-only
+// class with dllexport is unnecessary and harmless) this will give a
+// MSVC warning C4275 when the class derives from another class that
+// is not marked as dllexport. In our case, this will be a class
+// derived from a standard library exception. The C4275 documentation
+// explicitly states that this warning can be ignored when deriving
+// from a standard library type [2], but we don't want to mess with
+// the warning suppression pragmas; instead, we have a separate
 // DP_INTL_VISIBLE_SYMBOL macro that expands to nothing on Windows.
 //
 // [1]: The Glibc manual explicitly states that exception handling and

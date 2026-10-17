@@ -494,8 +494,8 @@ MessageCatalog::MessageCatalog(Stream& stream)
     static const U32 numItemTypes{4};
 
     struct ItemInfo {
-        // In case of a plural item, the second from (including its
-        // leading null separator) is already removed.
+        // In case of a plural item, the second from and its leading
+        // null separator is already removed.
         StrIRef strIRef;
         U32 contextSepPos;
         ItemType type;
@@ -716,8 +716,8 @@ MessageCatalog::MessageCatalog(Stream& stream)
         // https://www.unicode.org/cldr/charts/48/supplemental/language_plural_rules.html
         // https://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html
         //
-        // We use a slightly larger limit, but not too much since this
-        // number is used to calculate the size of the array.
+        // We use a larger limit, but not too much since this number
+        // is used to calculate the size of the array.
         static const CountT maxPluralForms{15};
         // Ensure that our limits are sane for the edge case when all
         // strings have plural forms.
@@ -775,7 +775,7 @@ MessageCatalog::MessageCatalog(Stream& stream)
     if (!impl->pluralForms)
         // If there is no header or if the header doesn't have a
         // "Plural-Forms" entry, follow the Gettext behavior and use
-        // the standard Germanic plural rule.
+        // the Germanic plural rule.
         impl->pluralForms.emplace(2, "n == 1 ? 0 : 1");
 
     const auto numPluralItems =

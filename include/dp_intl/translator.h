@@ -28,16 +28,15 @@ class Stream;
  *
  * * A static constant number `numPlurals` of type CountT, equal to
  *   the total number of plural forms (must be > 0). This value
- *   defines the number of arguments taken by the plural form methods
- *   such as translateN().
+ *   defines the number of arguments taken by the plural form methods.
  *
  * * A call operator with a signature:
  *
  *       CountT operator()(CountT n) const
  *
- *   The operator takes the `n` argument from a plural form method
- *   such as translateN(), and returns an index of the plural form
- *   within the range [0, numPlurals).
+ *   The operator takes the `n` argument from a plural form method and
+ *   returns an index of the plural form within the range
+ *   [0, numPlurals).
  *
  * The `translator_plural_spec.h` header provides GermanicPluralSpec
  * (for English and other Germanic languages) and SingleFormPluralSpec
@@ -157,9 +156,9 @@ public:
     /**
      * Translate a message.
      *
-     * The method searches the message catalog (MO file) for a message
-     * with the given ID. If the message is not present in the catalog
-     * (i.e., the message has not been translated), the ID itself is
+     * The method searches the message catalog for a message with the
+     * given ID. If the message is not present in the catalog (i.e.,
+     * the message has not been translated), the ID itself is
      * returned.
      */
     std::string_view translate(std::string_view id) const
@@ -181,8 +180,8 @@ public:
      * `context` string to resolve ambiguities in cases when the same
      * message ID can have different meanings depending on the
      * context. For example, the word "Filter" can be both a noun
-     * (e.g., when used as a label for a text input field) and a verb
-     * (when used a button text).
+     * (e.g., when used as a label for a text field) and a verb
+     * (when used as button text).
      *
      * See the Gettext manual for details:
      *
@@ -215,18 +214,17 @@ public:
      * The `plurals` parameter represents the plural forms of the
      * source language. Despite being a parameter pack, it requires
      * exactly `PluralSpec::numPlurals` arguments of the same string
-     * type as returned by the method (that is, `std::string_view` or
-     * `const char*`). A different number of arguments will result in
-     * a compile-time error.
+     * type as returned by the method. A different number of arguments
+     * will result in a compile-time error.
      *
-     * The method searches the message catalog (MO file) for a message
-     * with the ID equal to the first string in the `plurals`
-     * argument. If the message is found, the plural rule from the
-     * catalog is used to select the translated plural form. In this
-     * case, `PluralSpec` and the remaining `plurals` argument strings
-     * are not used. If the message is not present in the catalog
-     * (i.e., the message has not been translated), the `PluralSpec`
-     * is used to select a plural form from the `plurals` argument.
+     * The method searches the message catalog for a message with the
+     * ID equal to the first string in the `plurals` argument. If the
+     * message is found, the plural rule from the catalog is used to
+     * select the translated plural form. In this case, `PluralSpec`
+     * and the remaining `plurals` argument strings are not used. If
+     * the message is not present in the catalog (i.e., the message
+     * has not been translated), the `PluralSpec` is used to select a
+     * plural form from the `plurals` argument strings.
      *
      * See the Gettext manual for details:
      *
@@ -303,6 +301,12 @@ private:
             return {plurals...};
         }
 
+        // An implicit conversion operator that extracts the first
+        // item acts as an adapter for the MessageCatalog methods,
+        // which only require the first plural form. This simplifies
+        // generic code by making the translateImpl() argument list
+        // compatible with both the MessageCatalog methods and the
+        // fallback() overloads.
         operator std::string_view() const
         {
             return items[0];

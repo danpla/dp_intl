@@ -10,15 +10,15 @@ namespace dp::intl {
 
 
 /**
- * Stream for a file.
+ * File stream.
  */
 class DP_INTL_EXPORT FileStream : public Stream {
 public:
     /**
      * Open a file.
      *
-     * \throws FileNotFoundError if the file does not exist, or Error
-     *     on other errors.
+     * \throws FileNotFoundError if the file does not exist, or
+     *     dp::intl::Error on other errors.
      */
     explicit FileStream(const std::filesystem::path& path);
     ~FileStream();

@@ -64,8 +64,8 @@ library (also known as libintl), with the following improvements:
     to unsigned wrap around (modulo 2³²) on systems with a 32-bit
     `unsigned long`.
 
-    In contrast, dp_intl always uses a 64-bit integer type
-    (`uint64_t`) on all platforms.
+    In contrast, dp_intl uses a 64-bit integer type (`uint64_t`) on
+    all platforms.
 
 *   **Full control over file layout and loading**
 
@@ -92,10 +92,9 @@ library (also known as libintl), with the following improvements:
     Gettext because, although it also has two plural forms, "one" is
     used for both 0 and 1.
 
-    In contrast, with dp_intl, you can use any language for the source
-    strings because the plural rules are not hardcoded in the API but
-    can be defined in the C++ code using the same formulas as used in
-    PO files.
+    In contrast, dp_intl supports source strings in any language
+    because its plural rules are configurable rather than hardcoded in
+    the API.
 
 Smaller improvements include:
 

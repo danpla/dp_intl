@@ -24,19 +24,19 @@ public:
     virtual ~Stream() = default;
 
     /**
-     * Read up to the given number of bytes from the stream.
+     * Read up to `dstSize` bytes from the stream.
      *
      * \returns The number of bytes read, which can be less than
      *     `dstSize` if the end of the stream is reached.
      *
-     * \throws Error
+     * \throws dp::intl::Error
      */
     virtual std::size_t readSome(void* dst, std::size_t dstSize) = 0;
 
     /**
      * Set the stream position.
      *
-     * \throws Error
+     * \throws dp::intl::Error
      */
     virtual void setPosition(std::int64_t newPosition) = 0;
 };

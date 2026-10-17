@@ -95,7 +95,6 @@ std::vector<Token> tokenize(std::string_view s)
                 + std::string{s, 0, 10}
                 + "\""};
 
-
         result.push_back(
             {iter->type, 0, s.substr(0, iter->str.size())});
         s.remove_prefix(iter->str.size());

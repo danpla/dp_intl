@@ -21,7 +21,7 @@ struct LangTagFormat {
     /**
      * The separator to insert between subtags.
      *
-     * buildLangTag() is designed to make tags compatible with the
+     * buildLangTag() is designed to create tags compatible with the
      * matchLang() function, so the separators are intentionally
      * limited to hyphens and underscores.
      */
