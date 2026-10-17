@@ -47,6 +47,7 @@
     </tab>
     <tab type="user" url="https://github.com/danpla/dp_intl/releases" title="Download"/>
     <tab type="user" url="https://github.com/danpla/dp_intl" title="Development"/>
+    <tab type="user" url="@ref license" title="License"/>
   </navindex>
 
   <!-- Layout definition for a class page -->

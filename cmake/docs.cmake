@@ -41,6 +41,22 @@ add_custom_command(
 
 add_custom_target(doxygen_main_page DEPENDS "${MAIN_PAGE_PATH}")
 
+set(LICENSE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/license.txt")
+set(LICENSE_PAGE_PATH
+    "${CMAKE_CURRENT_BINARY_DIR}/doxygen-licnese-page.md")
+
+add_custom_command(
+    OUTPUT "${LICENSE_PAGE_PATH}"
+    COMMAND
+        "${CMAKE_COMMAND}"
+        -D "LICENSE_PATH=${LICENSE_PATH}"
+        -D "LICENSE_PAGE_PATH=${LICENSE_PAGE_PATH}"
+        -P "${CMAKE_CURRENT_LIST_DIR}/doxygen_gen_license_page.cmake"
+    DEPENDS "${LICENSE_PATH}"
+    VERBATIM)
+
+add_custom_target(doxygen_license_page DEPENDS "${LICENSE_PAGE_PATH}")
+
 doxygen_add_docs(
     docs
     include/dp_intl/count_t.h
@@ -52,7 +68,8 @@ doxygen_add_docs(
     include/dp_intl/translator.h
     include/dp_intl/translator_plural_spec.h
     "${MAIN_PAGE_PATH}"
+    "${LICENSE_PAGE_PATH}"
     ALL
     USE_STAMP_FILE)
 
-add_dependencies(docs doxygen_main_page)
+add_dependencies(docs doxygen_main_page doxygen_license_page)
