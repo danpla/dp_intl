@@ -7,6 +7,10 @@ install(
 
 include(GNUInstallDirs)
 
+target_include_directories(
+    dp_intl
+    INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+
 install(
     TARGETS dp_intl
     EXPORT dp_intl_targets
