@@ -54,6 +54,15 @@ export(
     NAMESPACE dp_intl::
     FILE "${CMAKE_CURRENT_BINARY_DIR}/dp_intl_targets.cmake")
 
+# We use get_property() instead of get_target_property() because the
+# latter sets the variable to <variable>-NOTFOUND instead of an empty
+# string and therefore requires an extra step for cleanup.
+get_property(
+    PKG_CONFIG_DEFS
+    TARGET dp_intl
+    PROPERTY INTERFACE_COMPILE_DEFINITIONS)
+list(TRANSFORM PKG_CONFIG_DEFS PREPEND "-D")
+
 configure_file(
     "${CMAKE_CURRENT_LIST_DIR}/pkg-config.pc.in"
     "${CMAKE_CURRENT_BINARY_DIR}/dp_intl.pc"
