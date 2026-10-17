@@ -45,6 +45,7 @@
       <tab type="user" url="@ref dp::intl" title="dp::intl Namespace"/>
       <tab type="filelist" visible="yes" title="" intro=""/>
     </tab>
+    <tab type="user" url="https://github.com/danpla/dp_intl/releases" title="Download"/>
     <tab type="user" url="https://github.com/danpla/dp_intl" title="Development"/>
   </navindex>
 
