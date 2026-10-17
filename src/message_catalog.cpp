@@ -39,6 +39,7 @@ struct StrIRef {
 
     CStrRef getCStrRef(const std::string& data) const
     {
+        assert(U32Max - pos >= size);
         assert(pos < data.size());
         assert(size < data.size() - pos);
         assert(data[pos + size] == 0);
@@ -48,6 +49,7 @@ struct StrIRef {
 
     std::string_view getView(const std::string& data) const
     {
+        assert(U32Max - pos >= size);
         assert(pos <= data.size());
         assert(size <= data.size() - pos);
 
