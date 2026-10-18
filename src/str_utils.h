@@ -53,10 +53,22 @@ bool equalIgnoreCase(std::string_view a, std::string_view b);
 bool startsWith(std::string_view s, std::string_view other);
 
 
+// libstdc++ versions before 10.1 erroneously reject char16_t and
+// char32_t from to_chars() via type traits. As a workaround, we cast
+// these types to integers using std::make_unsigned.
+template<typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
+std::to_chars_result toChars(char* begin, char* end, T v, int base)
+{
+    using T2 = std::conditional_t<
+        std::is_same_v<T, char16_t> || std::is_same_v<T, char32_t>,
+        std::make_unsigned_t<T>,
+        T>;
+    return std::to_chars(begin, end, static_cast<T2>(v), base);
+}
+
+
 // Locale-independent std::to_string().
-template<
-    typename T,
-    std::enable_if_t<std::numeric_limits<T>::is_integer, int> = 0>
+template<typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
 std::string toStr(T v)
 {
     char buf[
@@ -66,17 +78,15 @@ std::string toStr(T v)
         // represent any two-digit number, but not 256-999.
         std::numeric_limits<T>::digits10 + 1
         + std::numeric_limits<T>::is_signed];
-    return {buf, std::to_chars(buf, buf + sizeof(buf), v, 10).ptr};
+    return {buf, toChars(buf, buf + sizeof(buf), v, 10).ptr};
 }
 
 
-template<
-    typename T,
-    std::enable_if_t<std::numeric_limits<T>::is_integer, int> = 0>
+template<typename T, std::enable_if_t<std::is_integral_v<T>, int> = 0>
 std::string toHex(T v)
 {
     char buf[sizeof(T) * 2 + std::numeric_limits<T>::is_signed];
-    return {buf, std::to_chars(buf, buf + sizeof(buf), v, 16).ptr};
+    return {buf, toChars(buf, buf + sizeof(buf), v, 16).ptr};
 }
 
 
