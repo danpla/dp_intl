@@ -73,13 +73,13 @@
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a82fd30ba23114db95db574ee800c441f" id="r_a82fd30ba23114db95db574ee800c441f"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="#a82fd30ba23114db95db574ee800c441f">~Stream</a> ()=default</td></tr>
 <tr class="memitem:a14fc4eba7dae58d408d464e96bc40f06" id="r_a14fc4eba7dae58d408d464e96bc40f06"><td class="memItemLeft">virtual std::size_t&#160;</td><td class="memItemRight"><a class="el" href="#a14fc4eba7dae58d408d464e96bc40f06">readSome</a> (void *dst, std::size_t dstSize)=0</td></tr>
-<tr class="memdesc:a14fc4eba7dae58d408d464e96bc40f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read up to <span class="tt">dstSize</span> bytes from the stream.  <br /></td></tr>
+<tr class="memdesc:a14fc4eba7dae58d408d464e96bc40f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read up to <span class="tt">dstSize</span> bytes from the stream and advance the stream position by the number of bytes read.  <br /></td></tr>
 <tr class="memitem:af9edec8a5e993ef46eede4d9e4e49919" id="r_af9edec8a5e993ef46eede4d9e4e49919"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#af9edec8a5e993ef46eede4d9e4e49919">setPosition</a> (std::int64_t newPosition)=0</td></tr>
-<tr class="memdesc:af9edec8a5e993ef46eede4d9e4e49919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the stream position.  <br /></td></tr>
+<tr class="memdesc:af9edec8a5e993ef46eede4d9e4e49919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the stream position for the next read operation.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Input stream. </p>
-<p>Although the class methods use types such as <span class="tt">size_t</span> and <span class="tt">int64_t</span>, the dp_intl library will never read or position the stream beyond the first 100 megabytes. This means that if the underlying API used for a concrete <a class="el" href="classdp_1_1intl_1_1Stream.html" title="Input stream.">Stream</a> is limited to smaller integer types, you don't need to handle the edge cases, such as integer overflow or wrap-around. </p>
+<p>Although the class methods use types such as <span class="tt">size_t</span> and <span class="tt">int64_t</span>, the dp_intl library will never read or position the stream beyond the first 100 megabytes. This means that if the underlying API used for a concrete <a class="el" href="classdp_1_1intl_1_1Stream.html" title="Input stream.">Stream</a> is limited to 32-bit integer types, you don't need to handle edge cases like integer overflow or wrap-around. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a82fd30ba23114db95db574ee800c441f" name="a82fd30ba23114db95db574ee800c441f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a82fd30ba23114db95db574ee800c441f">&#9670;&#160;</a></span>~Stream()</h2>
@@ -134,7 +134,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Read up to <span class="tt">dstSize</span> bytes from the stream. </p>
+<p>Read up to <span class="tt">dstSize</span> bytes from the stream and advance the stream position by the number of bytes read. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes read, which can be less than <span class="tt">dstSize</span> if the end of the stream is reached.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
@@ -170,7 +170,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Set the stream position. </p>
+<p>Set the stream position for the next read operation. </p>
+<p><span class="tt">newPosition</span> is relative to the beginning of the stream. dp_intl will never call this method with a negative <span class="tt">newPosition</span>.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classdp_1_1intl_1_1Error.html">dp::intl::Error</a></td><td></td></tr>

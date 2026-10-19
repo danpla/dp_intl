@@ -79,9 +79,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aee12d8cb4361692d510d14351b2b6732" id="r_aee12d8cb4361692d510d14351b2b6732"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aee12d8cb4361692d510d14351b2b6732">FileStream</a> (FileStream &amp;&amp;)=delete</td></tr>
 <tr class="memitem:ab72993d8ddb0a06fa68020966f04c3d2" id="r_ab72993d8ddb0a06fa68020966f04c3d2"><td class="memItemLeft"><a class="el" href="#a08a5f7654e3a4a3d6d660f298d9c4bff">FileStream</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ab72993d8ddb0a06fa68020966f04c3d2">operator=</a> (<a class="el" href="#a08a5f7654e3a4a3d6d660f298d9c4bff">FileStream</a> &amp;&amp;)=delete</td></tr>
 <tr class="memitem:af2132b9e479946bc58e1ab12fbc3515a" id="r_af2132b9e479946bc58e1ab12fbc3515a"><td class="memItemLeft">std::size_t&#160;</td><td class="memItemRight"><a class="el" href="#af2132b9e479946bc58e1ab12fbc3515a">readSome</a> (void *dst, std::size_t dstSize) override</td></tr>
-<tr class="memdesc:af2132b9e479946bc58e1ab12fbc3515a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read up to <span class="tt">dstSize</span> bytes from the stream.  <br /></td></tr>
+<tr class="memdesc:af2132b9e479946bc58e1ab12fbc3515a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read up to <span class="tt">dstSize</span> bytes from the stream and advance the stream position by the number of bytes read.  <br /></td></tr>
 <tr class="memitem:a9dde79042a897fc6f3a2979df08bea57" id="r_a9dde79042a897fc6f3a2979df08bea57"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9dde79042a897fc6f3a2979df08bea57">setPosition</a> (std::int64_t newPosition) override</td></tr>
-<tr class="memdesc:a9dde79042a897fc6f3a2979df08bea57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the stream position.  <br /></td></tr>
+<tr class="memdesc:a9dde79042a897fc6f3a2979df08bea57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the stream position for the next read operation.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classdp_1_1intl_1_1Stream"><td colspan="2">Public Member Functions inherited from <a class="el" href="classdp_1_1intl_1_1Stream.html">dp::intl::Stream</a></td></tr>
 <tr class="memitem:a82fd30ba23114db95db574ee800c441f pub_methods_classdp_1_1intl_1_1Stream" id="r_a82fd30ba23114db95db574ee800c441f"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="classdp_1_1intl_1_1Stream.html#a82fd30ba23114db95db574ee800c441f">~Stream</a> ()=default</td></tr>
 </table>
@@ -266,7 +266,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Read up to <span class="tt">dstSize</span> bytes from the stream. </p>
+<p>Read up to <span class="tt">dstSize</span> bytes from the stream and advance the stream position by the number of bytes read. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes read, which can be less than <span class="tt">dstSize</span> if the end of the stream is reached.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
@@ -302,7 +302,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Set the stream position. </p>
+<p>Set the stream position for the next read operation. </p>
+<p><span class="tt">newPosition</span> is relative to the beginning of the stream. dp_intl will never call this method with a negative <span class="tt">newPosition</span>.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classdp_1_1intl_1_1Error.html">dp::intl::Error</a></td><td></td></tr>

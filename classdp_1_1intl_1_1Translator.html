@@ -318,7 +318,8 @@ template&lt;typename PluralSpec&gt; </div>
 </div><div class="memdoc">
 
 <p>Translate a message using a context to resolve ambiguities. </p>
-<p>The method is similar to <a class="el" href="#a592c10af51d256fc4c8bdf0e77045726" title="Translate a message.">translate()</a>, but takes an additional <span class="tt">context</span> string to resolve ambiguities in cases when the same message ID can have different meanings depending on the context. For example, the word "Filter" can be both a noun (e.g., when used as a label for a text field) and a verb (when used as button text).</p>
+<p>The method is similar to <a class="el" href="#a592c10af51d256fc4c8bdf0e77045726" title="Translate a message.">translate()</a>, but takes an additional <span class="tt">context</span> string to resolve ambiguities in cases when the same message ID can have different meanings depending on the context. For example, the word "Filter" can be both a noun (e.g., when used as a label for a text field) and a verb (when used as button text), in which case you can use "noun" and "verb" as context strings, respectively.</p>
+<p>Keep in mind that an empty context string is not the same as an absence of a context string, e.g., translateContext("", "Text") is not equivalent to translate("Text").</p>
 <p>See the Gettext manual for details:</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gettext/manual/html_node/Contexts.html">Using contexts for solving ambiguities</a></li>
@@ -357,7 +358,8 @@ template&lt;typename PluralSpec&gt; </div>
 </div><div class="memdoc">
 
 <p>Translate a message using a context to resolve ambiguities. </p>
-<p>The method is similar to <a class="el" href="#a592c10af51d256fc4c8bdf0e77045726" title="Translate a message.">translate()</a>, but takes an additional <span class="tt">context</span> string to resolve ambiguities in cases when the same message ID can have different meanings depending on the context. For example, the word "Filter" can be both a noun (e.g., when used as a label for a text field) and a verb (when used as button text).</p>
+<p>The method is similar to <a class="el" href="#a592c10af51d256fc4c8bdf0e77045726" title="Translate a message.">translate()</a>, but takes an additional <span class="tt">context</span> string to resolve ambiguities in cases when the same message ID can have different meanings depending on the context. For example, the word "Filter" can be both a noun (e.g., when used as a label for a text field) and a verb (when used as button text), in which case you can use "noun" and "verb" as context strings, respectively.</p>
+<p>Keep in mind that an empty context string is not the same as an absence of a context string, e.g., translateContext("", "Text") is not equivalent to translate("Text").</p>
 <p>See the Gettext manual for details:</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gettext/manual/html_node/Contexts.html">Using contexts for solving ambiguities</a></li>

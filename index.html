@@ -114,7 +114,7 @@ Improvements over Gettext</h2>
 <p class="startli">In contrast, dp_intl reads files through a virtual stream class that can wrap any file-like object, including those from archives and packages. It also imposes no requirements on file layout or naming conventions, since language selection and message catalog loading are not tied together.</p>
 </li>
 <li><p class="startli"><b>Any language in source strings</b></p>
-<p class="startli">The Gettext routines for translating plural form messages are limited to English and several other languages with two plural forms: "one" for 1 and "many" for all other numbers. This makes it impossible to use any other language that doesn't fit in this formula. For example, French is not a suitable source language for Gettext because, although it also has two plural forms, "one" is used for both 0 and 1.</p>
+<p class="startli">The Gettext routines for translating plural form messages are limited to English and several other languages with two plural forms: "one" for 1 and "many" for all other numbers. This makes it impossible to use any other language that doesn't fit this pattern. For example, French is not a suitable source language for Gettext because, although it also has two plural forms, "one" is used for both 0 and 1.</p>
 <p class="startli">In contrast, dp_intl supports source strings in any language because its plural rules are configurable rather than hardcoded in the API.</p>
 </li>
 </ul>
@@ -171,7 +171,7 @@ target_link_libraries(your_target PRIVATE dp_intl::dp_intl)
 Installation</h2>
 <p>For a traditional installation, run the following commands from the dp_intl directory: </p><pre class="fragment">cmake -DCMAKE_BUILD_TYPE=Release -B build
 cmake --build build
-cmake --install build
+cmake --install build --strip
 </pre><p>You can use the <span class="tt">CMAKE_INSTALL_PREFIX</span> option to change the default installation directory.</p>
 <p>In addition to the dp_intl library and its header files, the installation provides:</p>
 <ul>
