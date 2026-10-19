@@ -6,9 +6,9 @@ project(
     DESCRIPTION
         "Gettext-compatible internationalization library for C++")
 
-# We intentionally don't use the standard BUILD_SHARED_LIBS CMake
-# option to avoid potential conflicts when the library is added via
-# add_subdirectory().
+# We don't use the standard BUILD_SHARED_LIBS CMake option to avoid
+# potential conflicts when the library is added to another project via
+# add_subdirectory() or FetchContent.
 option(
     DP_INTL_BUILD_SHARED_LIB
     "Build a shared library instead of a static one"
@@ -61,9 +61,10 @@ if(DP_INTL_BUILD_SHARED_LIB)
 endif()
 
 # This is the end of the mandatory part of the CMake file. Projects
-# that add our library via add_subdirectory() can remove directories
-# that are only relevant for separate build/install, so all features
-# that depend on such directories are enabled conditionally.
+# that add our library via add_subdirectory()/FetchContent can remove
+# directories that are only relevant for a separate build/install, so
+# all features that depend on such directories are enabled
+# conditionally.
 
 if(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tests")
     option(DP_INTL_BUILD_TESTS "Build tests" NO)
