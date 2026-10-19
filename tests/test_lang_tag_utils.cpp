@@ -17,7 +17,7 @@ void testBuildLangTag()
 {
     const struct {
         std::vector<std::string_view> subtags;
-        std::string tag;
+        std::string_view tag;
         LangTagFormat format{
             LangTagFormat::Separator::Hyphen,
             LangTagFormat::LetterCase::Bcp47};
