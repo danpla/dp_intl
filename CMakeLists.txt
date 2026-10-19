@@ -4,7 +4,8 @@ project(
     dp_intl
     VERSION 1.0.0
     DESCRIPTION
-        "Gettext-compatible internationalization library for C++")
+        "Gettext-compatible internationalization library for C++"
+    HOMEPAGE_URL "https://danpla.github.io/dp_intl/")
 
 # We don't use the standard BUILD_SHARED_LIBS CMake option to avoid
 # potential conflicts when the library is added to another project via
