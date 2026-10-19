@@ -219,7 +219,7 @@ dp_intl directory:
 
     cmake -DCMAKE_BUILD_TYPE=Release -B build
     cmake --build build
-    cmake --install build
+    cmake --install build --strip
 
 You can use the `CMAKE_INSTALL_PREFIX` option to change the default
 installation directory.
