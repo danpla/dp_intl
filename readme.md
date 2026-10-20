@@ -87,8 +87,8 @@ library (also known as libintl), with the following improvements:
     The Gettext routines for translating plural form messages are
     limited to English and several other languages with two plural
     forms: "one" for 1 and "many" for all other numbers. This makes
-    it impossible to use any other language that doesn't fit in this
-    formula. For example, French is not a suitable source language for
+    it impossible to use any other language that doesn't fit this
+    pattern. For example, French is not a suitable source language for
     Gettext because, although it also has two plural forms, "one" is
     used for both 0 and 1.
 
