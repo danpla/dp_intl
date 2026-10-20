@@ -181,7 +181,12 @@ public:
      * message ID can have different meanings depending on the
      * context. For example, the word "Filter" can be both a noun
      * (e.g., when used as a label for a text field) and a verb
-     * (when used as button text).
+     * (when used as button text), in which case you can use "noun"
+     * and "verb" as context strings, respectively.
+     *
+     * Keep in mind that an empty context string is not the same as an
+     * absence of a context string, e.g., translateContext("", "Text")
+     * is not equivalent to translate("Text").
      *
      * See the Gettext manual for details:
      *
